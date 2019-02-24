@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container myitem">
+    <h1><i class="fas fa-newspaper"></i> {{ articles.title }}</h1>
+    <hr>
+    <img class="my_main_im" src="{{articles.main_image.url}}" alt="NotFound">
+
+    <div class="container">
+      <p id="mycontent">By : {{articles.author}}</p>
+      <p id="mycontent">{{articles.content}}</p>
+    </div>
+    <p class="mydate"><i class="fas fa-clock"></i> Published on: {{articles.date}}</p>
+  </div>
+
+  <div class="container">
+    <h4 id="comment-sec"><i class="fas fa-comments"></i> Comments : <a class="btn btn-primary comment-btn" href="{% url 'blog:add_comment' pk=articles.pk %}">Add Comment</a> </h4>
+
+    <div class="container">
+      {% for comment in articles.comments.all %}
+        <p id="commetor"><i class="fas fa-user"></i> <strong>{{comment.name}}</strong> : </p>
+        <div class="container">
+          <p id="comment">{{comment.comment}}</p>
+          <hr>
+        </div>
+
+      {% endfor %}
+    </div>
+
+  </div>
+
+{% endblock %}

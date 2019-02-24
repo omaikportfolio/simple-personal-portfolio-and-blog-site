@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for ar in object_list %}
+    <div class="container myitem">
+      <h1><a id="my-title" href="{% url 'blog:article_detail' pk=ar.pk %}"><i class="fas fa-newspaper"></i> {{ ar.title }}</a></h1>
+      <p>By : {{ar.author}}</p>
+      <p class="my-list-date"><i class="fas fa-clock"></i> Published on: {{ar.date}}</p>
+      <hr>
+    </div>
+  {% endfor %}
+
+{% endblock %}
